@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>MasterRangers</title>
+<link rel="stylesheet" href="style.css">
+<script src="fabric.js"></script>
+
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+
+</head>
+
+<body class="bodyBackground">
+	<center>
+		<h3><i>Pressione <b>e, v, a, r, i</b> para carregar as imagens dos &nbsp;</i> Master Rangers</h3>
+							
+		<!---Crie o Canvas--->
+		<canvas id="canvas" width="600" height="600"></canvas>
+	</center>
+	<script>
+		var tela = new fabric.Canvas("canvas");
+		var ctx = tela.getContext("2d");
+		var personagem = '';
+
+		var y=1;
+		var x=1;
+
+		var largura = 150;
+		var altura = 130;
+
+		function addRanger(){
+			fabric.image.fromURL(image, function (img){
+            personagem = img;
+			personagem.scaleToWiht(largura);
+			personagem.scaleToHeight(altura);
+			personagem.set({
+				top:y,
+				left:x
+			})
+			tela.add(personagem);
+			})
+		}
+
+		window.addEventListener("keydown", aperteiTecla);
+		function aperteiTecla(e){
+			console.log(e.keyCode)
+			//verifica se a tecla e foi pressionada
+			if(e.keyCode === 69){
+				//define a posição do ranger
+				x = 10;
+				//adiciona ele
+				addRander('ragerAzul.png');
+			}
+
+			if (e.keyCode === 86){
+				x = 160
+
+				 addRanger('rangerRosa.png');
+			}
+
+			if (e.keyCode === 65){
+				x = 310
+				addRanger('rangerAmarelo.png');
+			}
+
+			if (e.keyCode === 82){
+                x = 410
+				addRanger('rangerVerde.png');
+			}
+			if (e.keyCode === 73){
+				x = 510
+				addRanger('rangerVermelho.png');
+			}
+		}
+
+	</script>
+</body>
+</html>
